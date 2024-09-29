@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/post.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+           <div class="nav__data">
+              <a href="#" class="nav__logo">
+                 <i class="ri-book-fill"></i>Blockchainationary
+              </a>
+              
+              <div class="nav__toggle" id="nav-toggle">
+                 <i class="ri-menu-line nav__burger"></i>
+                 <i class="ri-close-line nav__close"></i>
+              </div>
+           </div>
+
+           <div class="nav__menu" id="nav-menu">
+              <ul class="nav__list">
+                <li><a href="./index.html" class="nav__link"><i class="fas fa-home"></i> Home</a></li>
+                 
+              </ul>
+           </div>
+        </nav>
+     </header>
+    <section style="margin-top: 150px;" class="add-word-section">
+        <div class="ccontainer">
+            <h2>Post A New Cryptocurrency Word</h2>
+            <form id="add-word-form">
+                <label for="word">Word:</label>
+                <input type="text" id="word" name="word" placeholder="Enter a word" required>
+    
+                <label for="definition">Definition:</label>
+                <textarea id="definition" name="definition" placeholder="Enter the definition" required></textarea>
+    
+                <label for="example">Example:</label>
+                <textarea id="example" name="example" placeholder="Enter an example" required></textarea>
+    
+                <button type="submit" id="add-word-btn">Add Word</button>
+            </form>
+            <div id="response-message"></div>
+        </div>
+    </section>
+    <style>
+        .add-word-section {
+    background-color: #fff;
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+}
+
+.add-word-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.add-word-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.add-word-section input,
+.add-word-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add-word-section button {
+    width: 100%;
+    padding: 10px;
+    background-color: #04068b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-word-section button:hover {
+    background-color: #2215da;
+}
+
+#response-message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #38fd83;
+}
+
+
+@media (max-width: 768px) {
+    .add-word-section {
+        padding: 20px; 
+        margin-top: 30px; 
+    }
+
+    .add-word-section h2 {
+        font-size: 1.5em;
+    }
+
+    .add-word-section input,
+    .add-word-section textarea {
+        font-size: 14px; 
+    }
+
+    .add-word-section button {
+        font-size: 16px; 
+    }
+
+    #response-message {
+        font-size: 14px; /
+    }
+}
+
+@media (max-width: 480px) {
+    .add-word-section {
+        padding: 15px; 
+    }
+
+    .add-word-section h2 {
+        font-size: 1.2em; 
+    }
+
+    .add-word-section input,
+    .add-word-section textarea {
+        font-size: 13px; 
+    }
+
+    .add-word-section button {
+        font-size: 14px; 
+    }
+
+    #response-message {
+        font-size: 12px; 
+    }
+}
+
+    </style>
+   <script>
+    document.getElementById('add-word-form').addEventListener('submit', function (e) {
+    e.preventDefault(); 
+
+    const word = document.getElementById('word').value.trim().toLowerCase(); 
+    const definition = document.getElementById('definition').value.trim();
+    const example = document.getElementById('example').value.trim();
+
+    if (!word || !definition || !example) {
+        alert('Please fill out all fields.');
+        return;
+    }
+
+   
+    fetch('https://blockdictionary.onrender.com/') 
+        .then(response => response.json())
+        .then(data => {
+            const existingWord = data.find(item => item.word.toLowerCase() === word);
+
+            if (existingWord) {
+                
+                document.getElementById('response-message').innerText = 'Word already exists!';
+            } else {
+                
+                const wordData = {
+                    word: word,
+                    definition: definition,
+                    example: example
+                };
+
+               
+                fetch('https://blockdictionary.onrender.com/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(wordData)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('response-message').innerText = 'Word added successfully!';
+                        console.log('Success:', data);
+                       
+                        document.getElementById('add-word-form').reset();
+                    })
+                    .catch(error => {
+                        document.getElementById('response-message').innerText = 'Failed to add word.';
+                        console.error('Error:', error);
+                    });
+            }
+        })
+        .catch(error => {
+            document.getElementById('response-message').innerText = 'Error checking existing words.';
+            console.error('Error:', error);
+        });
+});
+
+   </script>  
+   <script src="./assets/js/main.js"></script>
+</body>
+</html>

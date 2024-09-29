@@ -4,21 +4,28 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <!--=============== REMIXICONS ===============-->
+      
       <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+      <script type="module" src="https://unpkg.com/ionicons@6.0.3/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@6.0.3/dist/ionicons/ionicons.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      
 
-      <!--=============== CSS ===============-->
+
+      
       <link rel="stylesheet" href="assets/css/styles.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 
-      <title>Responsive dropdown menu - Bedimcode</title>
+
+      <title>Crypto Dictionary</title>
    </head>
    <body>
-      <!--=============== HEADER ===============-->
+      
       <header class="header">
          <nav class="nav container">
             <div class="nav__data">
                <a href="#" class="nav__logo">
-                  <i class="ri-planet-line"></i> Company
+                  <i class="ri-book-fill"></i>Blockchainationary
                </a>
                
                <div class="nav__toggle" id="nav-toggle">
@@ -27,97 +34,172 @@
                </div>
             </div>
 
-            <!--=============== NAV MENU ===============-->
             <div class="nav__menu" id="nav-menu">
-               <ul class="nav__list">
-                  <li><a href="#" class="nav__link">Home</a></li>
-
-                  <li><a href="#" class="nav__link">Company</a></li>
-
-                  <!--=============== DROPDOWN 1 ===============-->
-                  <li class="dropdown__item">
-                     <div class="nav__link">
-                        Analytics <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                     </div>
-
-                     <ul class="dropdown__menu">
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-pie-chart-line"></i> Overview
-                           </a>                          
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-arrow-up-down-line"></i> Transactions
-                           </a>
-                        </li>
-
-                        <!--=============== DROPDOWN SUBMENU ===============-->
-                        <li class="dropdown__subitem">
-                           <div class="dropdown__link">
-                              <i class="ri-bar-chart-line"></i> Reports <i class="ri-add-line dropdown__add"></i>
-                           </div>
-
-                           <ul class="dropdown__submenu">
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-file-list-line"></i> Documents
-                                 </a>
-                              </li>
-      
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-cash-line"></i> Payments
-                                 </a>
-                              </li>
-      
-                              <li>
-                                 <a href="#" class="dropdown__sublink">
-                                    <i class="ri-refund-2-line"></i> Refunds
-                                 </a>
-                              </li>
-                           </ul>
-                        </li>
-                     </ul>
-                  </li>
-                  
-                  <li><a href="#" class="nav__link">Products</a></li>
-
-                  <!--=============== DROPDOWN 2 ===============-->
-                  <li class="dropdown__item">
-                     <div class="nav__link">
-                        Users <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                     </div>
-
-                     <ul class="dropdown__menu">
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-user-line"></i> Profiles
-                           </a>                          
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-lock-line"></i> Accounts
-                           </a>
-                        </li>
-
-                        <li>
-                           <a href="#" class="dropdown__link">
-                              <i class="ri-message-3-line"></i> Messages
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-
-                  <li><a href="#" class="nav__link">Contact</a></li>
-               </ul>
+                <ul class="nav__list">
+                    <li><a href="#" class="nav__link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about" class="nav__link"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#hero" class="nav__link"><i class="fas fa-search"></i> Search A Crypto Word</a></li>
+                    <li><a href="#features" class="nav__link"><i class="fas fa-star"></i> Features</a></li>
+                    <li><a href="./post.html" class="nav__link"><i class="fas fa-pencil-alt"></i> Post A Crypto Word</a></li>
+                </ul>                
             </div>
          </nav>
       </header>
+      <main>
+        <section class="hero" id="hero">
+            <div class="hero-section">
+                <h1 class="text">BLOCKCHAINATIONARY<span class="highlight">RY</span></h1>
+                <p>CRYPTO, WEB3, THE FUTURE'S DICTIONARY</p>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Find a word" class="search-input" id="inp-word">
+                    <button class="search-button" id="search-btn">SEARCH</button>
+                </div>
+            
+                <div class="result" id="result"></div>
+            </div>
+        </section>
+         <div class="container" id="features">
+            <div style="display: flex; flex-direction: column;">
+                <p class="section-subtitle">Our Features</p>
+                <h2 class="h2 section-title" style="padding-bottom: 20px;">Crypto Dictionary Features</h2>
+            </div>
+            <ul class="features-list">
+                <li>
+                    <a href="#" class="features-card">
+                        <div class="card-icon">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </div>
+                        <h3 class="card-title">Advanced Search</h3>
+                        <div class="card-btn">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="features-card">
+                        <div class="card-icon">
+                            <ion-icon name="language-outline"></ion-icon>
+                        </div>
+                        <h3 class="card-title">Multi-language Support</h3>
+                        <div class="card-btn">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="features-card">
+                        <div class="card-icon">
+                            <ion-icon name="book-outline"></ion-icon>
+                        </div>
+                        <h3 class="card-title">Comprehensive Definitions</h3>
+                        <div class="card-btn">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="features-card">
+                        <div class="card-icon">
+                            <ion-icon name="stats-chart-outline"></ion-icon>
+                        </div>
+                        <h3 class="card-title">Market Insights</h3>
+                        <div class="card-btn">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="features-card">
+                        <div class="card-icon">
+                            <ion-icon name="globe-outline"></ion-icon>
+                        </div>
+                        <h3 class="card-title">API Integration</h3>
+                        <div class="card-btn">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="features-card">
+                        <div class="card-icon">
+                            <ion-icon name="newspaper-outline"></ion-icon>
+                        </div>
+                        <h3 class="card-title">Crypto News Updates</h3>
+                        <div class="card-btn">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="features-card">
+                        <div class="card-icon">
+                            <ion-icon name="notifications-outline"></ion-icon>
+                        </div>
+                        <h3 class="card-title">Real-time Alerts</h3>
+                        <div class="card-btn">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="features-card">
+                        <div class="card-icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </div>
+                        <h3 class="card-title">Privacy Protection</h3>
+                        <div class="card-btn">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <section class="about-section" id="about">
+            <div class="contaiiner">
+                <div class="about-heading">
+                    <h1>About <span>Blockchainationary</span></h1>
+                </div>
+                <p class="about-description">
+                    Blockchainationary is the world's most comprehensive and dynamic dictionary for all things related to cryptocurrency, blockchain, and web3 technology. Our goal is to provide a platform where users can discover and understand the decentralized world with ease.
+                </p>
+                <div class="about-content">
+                    <div class="mission">
+                        <h2>Our Mission</h2>
+                        <p>
+                            We aim to bridge the gap between crypto technology and its users by offering precise and accessible definitions. Blockchainationary strives to become the go-to reference for crypto, making blockchain easier to understand for everyone.
+                        </p>
+                    </div>
+                    <div class="team">
+                        <h2>Our Team</h2>
+                        <p>
+                            A team of passionate blockchain enthusiasts, developers, and crypto experts stand behind Blockchainationary, committed to making blockchain knowledge widely available.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-links">
+                    <a href="#home"><i class="fas fa-home"></i> Home</a>
+                    <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+                    <a href="#search"><i class="fas fa-search"></i> Search A Crypto Word</a>
+                    <a href="#features"><i class="fas fa-star"></i> Features</a>
+                    <a href="#post"><i class="fas fa-pencil-alt"></i> Post A Crypto Word</a>
+                </div>
+                <div class="footer-info">
+                    <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        
+        
+      </main>
 
-      <!--=============== MAIN JS ===============-->
+      
+
       <script src="assets/js/main.js"></script>
+      <script src="./assets/script.js"></script>
    </body>
 </html>
