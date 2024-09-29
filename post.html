@@ -24,10 +24,10 @@
            </div>
 
            <div class="nav__menu" id="nav-menu">
-              <ul class="nav__list">
-                <li><a href="./index.html" class="nav__link"><i class="fas fa-home"></i> Home</a></li>
-                 
-              </ul>
+               <ul class="nav__list">
+                   <li><a href="./index.html" class="nav__link"><i class="fas fa-home"></i> Home</a></li>
+                   <li><a href="./documentation.html" class="nav__link"><i class="fas fa-book"></i> Documentation</a></li>
+               </ul>                              
            </div>
         </nav>
      </header>
@@ -49,114 +49,19 @@
             <div id="response-message"></div>
         </div>
     </section>
-    <style>
-        .add-word-section {
-    background-color: #fff;
-    padding: 40px;
-    max-width: 600px;
-    margin: 0 auto;
-    margin-top: 50px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-
-}
-
-.add-word-section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.add-word-section label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #333;
-}
-
-.add-word-section input,
-.add-word-section textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.add-word-section button {
-    width: 100%;
-    padding: 10px;
-    background-color: #04068b;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.add-word-section button:hover {
-    background-color: #2215da;
-}
-
-#response-message {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 16px;
-    color: #38fd83;
-}
-
-
-@media (max-width: 768px) {
-    .add-word-section {
-        padding: 20px; 
-        margin-top: 30px; 
-    }
-
-    .add-word-section h2 {
-        font-size: 1.5em;
-    }
-
-    .add-word-section input,
-    .add-word-section textarea {
-        font-size: 14px; 
-    }
-
-    .add-word-section button {
-        font-size: 16px; 
-    }
-
-    #response-message {
-        font-size: 14px; /
-    }
-}
-
-@media (max-width: 480px) {
-    .add-word-section {
-        padding: 15px; 
-    }
-
-    .add-word-section h2 {
-        font-size: 1.2em; 
-    }
-
-    .add-word-section input,
-    .add-word-section textarea {
-        font-size: 13px; 
-    }
-
-    .add-word-section button {
-        font-size: 14px; 
-    }
-
-    #response-message {
-        font-size: 12px; 
-    }
-}
-
-    </style>
-   <script>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="./post.html"><i class="fas fa-pencil-alt"></i> Post A Crypto Word</a>
+                <a href="./documentation.html"><i class="fas fa-book"></i> Documentation</a>
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
     document.getElementById('add-word-form').addEventListener('submit', function (e) {
     e.preventDefault(); 
 
@@ -212,8 +117,9 @@
             console.error('Error:', error);
         });
 });
-
-   </script>  
+    </script>
+ 
    <script src="./assets/js/main.js"></script>
+   <script src="./assets/script.js"></script>
 </body>
 </html>

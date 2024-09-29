@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Dictionary Documentation</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/documentation.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+           <div class="nav__data">
+              <a href="#" class="nav__logo">
+                 <i class="ri-book-fill"></i>Blockchainationary
+              </a>
+              
+              <div class="nav__toggle" id="nav-toggle">
+                 <i class="ri-menu-line nav__burger"></i>
+                 <i class="ri-close-line nav__close"></i>
+              </div>
+           </div>
+
+           <div class="nav__menu" id="nav-menu">
+               <ul class="nav__list">
+                   <li><a href="./index.html" class="nav__link"><i class="fas fa-home"></i> Home</a></li>
+                   <li><a href="./post.html" class="nav__link"><i class="fas fa-pencil-alt"></i> Post A Crypto Word</a></li>
+               </ul>                              
+           </div>
+        </nav>
+     </header>
+    <div class="containerr">
+        <h1 class="h1">Blockchainationary Documentation</h1>
+
+        <div class="url-container">
+            <input type="text" id="url" value="https://blockdictionary.onrender.com" readonly>
+            <button class="copy-button" onclick="copyURL()">Copy URL</button>
+        </div>
+        <div id="copied-message" class="copied-message">URL copied to clipboard!</div>
+
+        <div class="section" style="display: flex; flex-direction: column; gap: 20px;">
+            <h2>Introduction</h2>
+            <p>
+                Welcome to the ultimate resource for all things crypto! In a rapidly evolving digital landscape, understanding the intricate terms and concepts of cryptocurrencies, blockchain technology, and Web3 is more critical than ever. Our Crypto Dictionary is designed to serve as your go-to reference, providing comprehensive definitions and explanations for a vast array of crypto-related terminology.
+            </p>
+            <p>
+                Whether you're a seasoned investor looking to refine your knowledge or a newcomer eager to grasp the fundamentals, our dictionary is tailored to meet your needs. We believe that knowledge is power, and by arming yourself with the right information, you can navigate the complexities of the cryptocurrency world with confidence.
+            </p>
+            <p>
+                Our platform not only offers accurate definitions but also integrates the latest industry trends and insights, ensuring you stay updated with the most relevant information. With features like advanced search capabilities, multi-language support, and API integration, our crypto dictionary is not just a static reference but a dynamic tool designed to enhance your learning experience. Join us on this journey of discovery, and empower yourself with the knowledge to thrive in the digital economy!
+            </p>
+        </div>
+        
+
+        <div class="section">
+            <h2>API Endpoints</h2>
+            <p>To get started, use the following endpoints:</p>
+            <ul>
+                <li><strong>GET /api/words</strong> - Retrieve a list of crypto terms.</li>
+                <li><strong>GET /api/words/{term}</strong> - Get the definition of a specific crypto term.</li>
+                <li><strong>POST /api/words</strong> - Add a new crypto term with the following payload:</li>
+            </ul>
+            <pre>
+{
+    "term": "exampleTerm",
+    "definition": "This is an example definition for the term."
+}
+            </pre>
+        </div>
+
+        <div class="section">
+            <h2>Examples</h2>
+            <p>Here are some example requests:</p>
+            <pre>
+GET /api/words
+GET /api/words/bitcoin
+
+POST /api/words
+Request Body:
+{
+    "term": "bitcoin",
+    "definition": "A digital currency created in January 2009 following the housing market crash."
+    "example": "btc"
+}
+            </pre>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="./post.html"><i class="fas fa-pencil-alt"></i> Post A Crypto Word</a>
+                <a href="./documentation.html"><i class="fas fa-book"></i> Documentation</a>
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function copyURL() {
+            const urlInput = document.getElementById("url");
+            urlInput.select();
+            document.execCommand("copy");
+            
+            const message = document.getElementById("copied-message");
+            message.style.display = "block";
+
+            
+            gsap.fromTo(message, { opacity: 0 }, { opacity: 1, duration: 0.5, y: -10, ease: "power2.out" });
+            gsap.to(message, { opacity: 0, duration: 0.5, delay: 2, y: 10 });
+        }
+    </script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

@@ -15,10 +15,10 @@ btn.addEventListener("click", () => {
         .then((data) => {
             console.log("API Response:", data);
 
-            // Find the word data from the API response
+            
             let wordData = data.find(item => item.word.toLowerCase() === inpWord);
 
-            // Display word and details if found
+            
             if (wordData) {
                 result.innerHTML = `
                 <div class="word">
@@ -29,7 +29,7 @@ btn.addEventListener("click", () => {
                     <p><strong>Example:</strong> ${wordData.example || "No example available"}</p>
                 </div>`;
             } else {
-                // Word not found
+                
                 result.innerHTML = `<h3 class="error">Word not found</h3>`;
             }
         })
@@ -38,3 +38,8 @@ btn.addEventListener("click", () => {
             result.innerHTML = `<p class="error">Couldn't Find The Word</p>`;
         });
 });
+
+
+
+// post api
+
